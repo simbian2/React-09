@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리액트 로그인 로그아웃</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script type="text/babel">
+        class LoginBtn extends React.Component{
+            constructor(props){
+                super(props)
+
+                //상태
+                this.state={isLogin:false}
+            }
+
+            render(){
+                return(
+                    <button onClick = {() => {this.setState({isLogin:!this.state.isLogin})}}>
+                        {this.state.isLogin ? '로그아웃' : '로그인'}
+                    </button>
+                    // React.createElement('button',{onClick:()=>{this.setState({isLogin:!this.state.isLogin}) }},this.state.isLogin? '로그아웃' : '로그인') // 상태변경할 때는 이 코드 사용
+                );
+            }
+        }
+
+        //인자값 두가지; 내가 넣을 내용과 내가 넣을 위치
+        ReactDOM.render(
+            <LoginBtn />,
+            // React.createElement(LoginBtn),
+            // React.createElement('button',null,'버튼'), //타입, 속성(class등), 내용 ->첫번째 인자값
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+</html>

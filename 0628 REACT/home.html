@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈</title>
+    <link rel = "stylesheet" href = "./home.css">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+    <script type = "text/babel">
+
+        class ComponentForm extends React.Component{
+            render(){
+                return(
+                    <li>
+                        <form>
+                            <h4>댓글쓰기
+                                <span>(3)</span>
+                            </h4>
+                            <span className = "ps_box">
+                                <input type = "text" placeholder = "댓글내용을 입력해주세요." className = "int"></input>
+                            </span>
+                            <span><input type = "submit" value = "등록" className = "btn"></input></span>     
+                        </form>
+                    </li>
+                )
+            }
+        }
+
+        class ComponentRow extends React.Component{
+            render(){
+                return(
+                    <li className = "comment-form">
+                        <ul class = "comment-row">
+                            <li class = "comment-id">web7722</li>
+                            <li class = "comment-content">안녕하세요</li>
+                            <li class = "comment-date">2021-06-24</li>
+                        </ul>
+                    </li>
+                )
+            }
+        }
+
+        class CommentApp extends React.Component{
+            render(){
+                return(
+                    <ul class = "comment">
+                        <ComponentRow />  
+                        <ComponentRow />  
+                        <ComponentRow />  
+                        <ComponentForm />  
+                    </ul>  
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <CommentApp />,
+            document.querySelector('#root')
+        )
+    </script>
+</body>
+</html>

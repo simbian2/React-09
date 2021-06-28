@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="applyInfo">
+        <ul>
+            <li>
+                <input id="curriculum" name="curriculum" type="checkbox" value="1">항목1
+                <input id="curriculum" name="curriculum" type="checkbox" value="2">항목2
+                <input id="curriculum" name="curriculum" type="checkbox" value="3">항목3
+                <input id="curriculum" name="curriculum" type="checkbox" value="4">항목4
+                <input id="curriculum" name="curriculum" type="checkbox" value="5">항목5
+                <input id="curriculum" name="curriculum" type="checkbox" value="6">항목6
+                <input id="curriculum" name="curriculum" type="checkbox" value="7">항목7
+                <input id="curriculum" name="curriculum" type="checkbox" value="8">항목8
+            </li>
+        </ul>
+        <div id="btnGroup_center">
+            <button type="button" id = "btn">신청</button>
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+
+    let btn = document.querySelector('#btn')    
+    let curr = document.querySelectorAll('#curriculum:checked')
+    console.log(curr.length)
+
+
+    btn.addEventListener('click',()=>{
+        if(curr.length==0){
+        alert('최소1개')
+    } else if(curr.length>4){
+        alert('적당히')
+    }
+    })
+
+</script>
+</html>
