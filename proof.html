@@ -4,45 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>리액트 시간</title>
+    <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
 </head>
 <body>
     <div id = "root"></div>
     <script type = "text/babel">
-        class Clock extends React.Component{
+        class Name extends React.Component{
+            render(){
+                return(
+                    <div>
+                        {this.props.value}
+                    </div>
+                )
+            }
+        }
+        class App extends React.Component{
             constructor(props){
                 super(props)
                 this.state = {
-                    currentTime:new Date().toLocaleTimeString()
+                    name:'ingoo'
                 }
             }
-
-            //렌더가 두 번 되는 문제를 해결하는 함수 로딩 문제
-            componentDidMount(){
-                setInterval(() =>{
-                    this.setState({currentTime:new Date().toLocaleTimeString()})
-                },1000)
-            }
-
             render(){
-                console.log('render')
-                // setInterval(() =>{
-                //     this.setState({currentTime:new Date().toLocaleTimeString()})
-                // },1000)
                 return(
                     <div>
-                        <h1>Hello World!</h1>
-                        <h2>It is {this.state.currentTime}</h2>
+                        {this.state.name}
+                        <Name value = {this.state.name} />
                     </div>
-                )   
+                )
+                //Props는 component를 사용할 때 지정이 가능합니다.
+                //XML이나 HTML 형태로 봤을 때 속성 값에 변수 명을 지정 할 수 있습니다.
+                //<Element Attribute = "Value" />
+                //<Name value = {this.state.name} />
             }
         }
+
         ReactDOM.render(
-            <Clock/>,
+            <App />,
             document.querySelector('#root')
         )
     </script>

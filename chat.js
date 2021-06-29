@@ -2,7 +2,7 @@ const chatBtn = document.querySelector('#chatBtn');
 const chatPlace = document.querySelector('#chatPlace');
 let flag = undefined;
 
-//0-00 채팅 창을 열고 닫는 팝업 창의 클릭 시
+//0-00 채팅 창을 열고 닫는 팝업 창의 클릭 시 채팅 창이 열린다
 chatBtn.addEventListener('click', () => {
     chatBtn.style.marginTop = "0px";
     chatBtn.style.transition = "0.5s ease-in-out";
@@ -41,6 +41,7 @@ socket.on('Userin', data => {
     
     let chat_DIV = document.querySelector('.chat_ing_div')
     chat_DIV.addEventListener('click', () => {
+        //0-1. 접속 아이디를 클릭 시 채팅 창이 열리고
         getChatRoom();
         //0-1. 접속 아이디를 클릭 시 관리자에게만 유저 관련 정보를 보낸다 E
         socket.emit('Please',{userid, socketID})
