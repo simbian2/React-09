@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <script type = "text/babel">
+
+        class Header extends React.Component{
+            render(){
+                return(
+                    <ul className = "comment">
+                        {this.props.children}
+                    </ul>
+                )
+            }
+        }
+
+        class Logo extends React.Component{
+            render(){
+                return(
+                    <li className = "comment-form">
+                        <form onSubmit = {this.props.onSubmit}>
+                            <h4>댓글쓰기
+                                <span>({this.props.length})</span>
+                            </h4>
+                            <span className = "ps_box">
+                                <input type = "text" placeholder = "댓글내용을 입력해주세요." className = "int" />
+                            </span>
+                            <input type = "submit" value = "등록" className = "btn"/>   
+                        </form>
+                    </li>
+                )
+            }
+        }
+
+        
+        class MenuItem extends React.Component{
+            render(){
+                return(
+                    <li className = "comment-form">
+                        <ul className = "comment-row">
+                            <li className = "comment-id">d</li>
+                            <li className = "comment-content">g</li>
+                            <li className = "comment-date">f</li>
+                        </ul>
+                    </li>
+                )
+            }
+        }
+
+        class Menu extends React.Component{
+            render(){
+                return(
+                    <>
+                        <MenuItem />
+                        <MenuItem />
+                        <MenuItem />
+                        <MenuItem />
+                    </>
+                )
+            }
+        }
+
+        class App extends React.Component{
+
+            state = {
+                text:'Hello World!'
+            }
+
+            render(){
+                return(
+                    <>
+                        <Header>
+                            <Logo />
+                            <Menu />
+                        </Header>
+                    </>
+                )
+            }   
+
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#root')
+        )
+
+    </script>
+</body>
+</html>
