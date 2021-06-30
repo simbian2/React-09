@@ -17,13 +17,13 @@
         class ComponentForm extends React.Component{
             render(){
                 return(
-                    <li>
+                    <li className = "comment-form">
                         <form onSubmit = {this.props.onSubmit}>
                             <h4>댓글쓰기
-                                <span>(3)</span>
+                                <span>({this.props.length})</span>
                             </h4>
                             <span className = "ps_box">
-                                <input type = "text" placeholder = "댓글내용을 입력해주세요." name = "int" className = "int" />
+                                <input type = "text" placeholder = "댓글내용을 입력해주세요." className = "int" />
                             </span>
                             <input type = "submit" value = "등록" className = "btn"/>   
                         </form>
@@ -38,9 +38,9 @@
                 return(
                     <li className = "comment-form">
                         <ul className = "comment-row">
-                            <li className = "comment-id">web7722</li>
-                            <li className = "comment-content">{this.props.value}</li>
-                            <li className = "comment-date">2021-06-24</li>
+                            <li className = "comment-id">{this.props.userid}</li>
+                            <li className = "comment-content">{this.props.content}</li>
+                            <li className = "comment-date">{this.props.date}</li>
                         </ul>
                     </li>
                 )
@@ -52,25 +52,61 @@
             constructor(props){
                 super(props)
                 this.state = {
+                    comments:[
+                        {userid:'web7722',content:'안녕하세요11',date:'2021-06-30'},
+                        {userid:'web7722',content:'안녕하세요12',date:'2021-06-30'},
+                        {userid:'web7722',content:'안녕하세요13',date:'2021-06-30'},
+                        {userid:'web7722',content:'안녕하세요12',date:'2021-06-30'},
+                        {userid:'web7722',content:'안녕하세요13',date:'2021-06-30'}
+                    ]
                 }
 
             }
 
             onSubmit = (e) => {
                 e.preventDefault()
-                console.log(e.target.int.value)
+                //target은 event가 발생한 DOM이다.
+                //Create React App
+                //Babel WebPack React React-DOM JSX <></>
+                //Class Function
+                //State Next.Js
+                console.log(e.target)
+                console.log(e.target)
+                console.log(e.target.querySelector('.int').value)
+                let input = e.target.querySelector('.int').value
+                let obj = {userid:'web7722', content:input, date:'2021-06-30'}
+                
+                let {comments} = {...this.state}
+                comments.push(obj)
 
-                this.setState({
-                    int:e.target.int.value
-                })
+                this.setState({comments:comments})
+                e.target.reset()
+            }
 
+            renderRow(){
+                let {comments} = {...this.state}
+                return(
+                    comments.map( (value,key) => {
+                        return(
+                            <ComponentRow 
+                                key = {key}
+                                userid = {value.userid}
+                                content = {value.content}
+                                date = {value.date}
+                            />
+                        )
+                    })
+                )
             }
 
             render(){
                 return(
                     <ul className = "comment">
-                        <ComponentRow value = {this.state.int}/>  
-                        <ComponentForm int = {this.state.int} onSubmit = {this.onSubmit} />  
+                        <ComponentForm 
+                            length = {this.state.comments.length}
+                            onSubmit = {this.onSubmit}
+                        />  
+                        {this.renderRow()}
                     </ul>  
                 )
             }
