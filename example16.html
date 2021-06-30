@@ -58,7 +58,7 @@
             logout = () => {
                 return (
                     <>
-                        <li>Logout</li>
+                        <li onClick = {this.props.onDelete}>Logout</li>
                         <li>Info</li>
                     </>
                 )
@@ -117,12 +117,19 @@
 
         class App extends React.Component{
 
-            LoginBool = {
+            state = {
                 isLogin:false,
             }
 
-            loginInfo = (data) => {
-                console.log(data)
+            handleCreate = (data) => {
+                let {userid,userpw} = data
+                if(userid ==='admin' && userpw === 'admin'){
+                    this.setState({isLogin:true})
+                }
+            }
+
+            handleDelete = (data) => {
+                this.setState({isLogin:false})
             }
 
             render(){
@@ -131,9 +138,9 @@
                         <Header>
                             <Logo />
                             <Menu />
-                            <Utill isLogin = {this.LoginBool.isLogin} />
+                            <Utill isLogin = {this.state.isLogin} onDelete = {this.handleDelete} />
                         </Header>
-                        <LoginBox onCreate = {this.loginInfo} isLogin = {this.LoginBool.isLogin} onClick = {() => {!this.LoginBool.isLogin}}/>
+                        {this.state.isLogin ? '' : <LoginBox onCreate = {this.handleCreate} />}
                     </>
                 )
             }
