@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id = "root"></div>
+</body>
+<script type = "text/babel">
+
+    class App extends React.Component {
+
+        state = {
+            userid:'',
+            userpw:'',
+            isLogin:false
+        }
+
+        handleChangeUserid = (e) => {
+            this.setState({[e.target.name]:e.target.value})
+        }
+
+        handleChangeUserpw = (e) => {
+            this.setState({[e.target.name]:e.target.value})
+        }
+
+        handleSubmit = (e) => {
+
+            if(userid === 'admin' && userpw === 'admin'){
+                this.setState({isLogin:true})
+            } else {
+                this.setState({isLogin:false})
+            }
+
+            this.setState({userid:''})
+            this.setState({userpw:''})
+        
+        }
+
+        render(){
+                return(
+                    <>
+                        <form onSubmit = {() => {handleSubmit}}>
+                            <input type = "text" name = "userid" onChange = {() => {handleChangeUserid}} value = "" />
+                            <input type = "text" name = "userpw" onChange = {() => {handleChangeUserpw}} value = "" />
+                            <button type = "submit">로그인</button>
+                        </form>
+                    {isLogin ? '로그인 됨' : '로그인 안 됨'}
+                </>
+                )
+            }
+
+
+    }
+
+    ReactDOM.render(
+                <App />,
+                document.querySelector('#root')
+            )
+</script>
+</html>

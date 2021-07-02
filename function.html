@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+    <script type = "text/babel">
+
+        //<1>
+        function App(){
+            let [text,setText] = React.useState('잃')
+            let [text1,setText1] = React.useState('막')
+            let [text2,setText2] = React.useState('송')
+            let [list,setList] = React.useState([1,2,3,4,5])
+
+            const handleClick = e => {
+                setText('뀨')
+                setText1('스벌')
+            }
+
+            
+            const handle = e => {
+                setText('바ggggggg꿈')
+                setText1('바ggggggg꿈')
+            }
+            return(
+                <>
+                    <p onMouseOver = {handle} onMouseOut = {handleClick}>{text}</p>
+                    <p>{text1}</p>
+                    <p>{text2}</p>
+                    <p>{list[2]}</p>
+                    <p>{list[3]}</p>
+                    <p>
+                        {list.map(v => {return v})}
+                    </p>
+                    <p>
+                        {list.map(v =>v+1)}
+                    </p>
+                </>
+            )
+        }
+
+
+
+        //<2>
+        // function App2() {
+        //     return(
+        //         <p>Hello function world!</p>
+        //     )
+        // }
+
+        // ReactDOM.render(
+        //     <App2 />,
+        //     document.querySelector('#root')
+        // )
+
+
+
+        // <3>
+        // class App extends React.Component {
+            // constructor(props){
+            //     super(props)
+            //     this.state = {
+            //         text:'hello world!',
+            //         text2:'hello world@',
+            //         text3:'hello world#'
+            //     }
+            // }
+        // handleClick = e => {
+        //     this.setState({text:'바꿈.',text2:'바꿈.'})
+        // }
+
+            // render(){
+            //     return(
+            //         <>
+            //             <p onClick = { this.handleClick }>{this.state.text}</p>
+            //             <p>{this.state.text2}</p>
+            //             <p>{this.state.text3}</p>
+            //         </>
+            //     )
+            // }
+        // }
+
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#root')
+        )
+
+    </script>
+</body>
+</html>
